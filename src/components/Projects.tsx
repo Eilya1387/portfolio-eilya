@@ -22,7 +22,7 @@ const projects = [
       "Implement a modern web application for online pizza ordering with full customization capabilities.",
     tech: ["React js"],
     image: "/pizza.webp",
-    address: "https://mcdonald-fastfood.vercel.app/",
+    address: "https://pizza-fastfood.netlify.app/",
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const projects = [
       "Design and implementation of a clone version of the Filmo website.",
     tech: ["React js", "Tailwind"],
     image: "/filimo.webp",
-    address: "https://my-filimo.vercel.app/",
+    address: "https://my-filimo.netlify.app/",
   },
 ];
 
