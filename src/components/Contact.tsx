@@ -2,10 +2,13 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaGithub } from "react-icons/fa";
-import { FaTelegramPlane } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import {
+  FaGithub,
+  FaTelegramPlane,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
+import { supabase } from "@/lib/supabase";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +19,7 @@ export default function Contact() {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -96,49 +100,96 @@ export default function Contact() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    gsap.to(".contact-form", {
-      scale: 0.95,
-      duration: 0.1,
-      yoyo: true,
-      repeat: 1,
-      onComplete: () => {
-        const successMsg = document.createElement("div");
-        successMsg.className = "success-message";
-        successMsg.textContent = "✓ Message sent successfully!";
-        successMsg.style.cssText = `
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background: #00c754;
-          color: black;
-          padding: 20px 40px;
-          border-radius: 10px;
-          font-weight: bold;
-          z-index: 1000;
-          opacity: 0;
-        `;
-        document.body.appendChild(successMsg);
+    try {
+      const { error } = await supabase.from("messages").insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+      ]);
 
-        gsap.to(successMsg, {
-          opacity: 1,
-          scale: 1.1,
-          duration: 0.3,
-          onComplete: () => {
-            gsap.to(successMsg, {
-              opacity: 0,
-              delay: 2,
-              onComplete: () => successMsg.remove(),
-            });
-          },
-        });
-      },
-    });
+      if (error) throw error;
 
-    setFormData({ name: "", email: "", message: "" });
+      gsap.to(".contact-form", {
+        scale: 0.95,
+        duration: 0.1,
+        yoyo: true,
+        repeat: 1,
+        onComplete: () => {
+          const successMsg = document.createElement("div");
+          successMsg.className = "success-message";
+          successMsg.textContent = "✓ Message sent successfully!";
+          successMsg.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #00c754;
+            color: black;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 1000;
+            opacity: 0;
+          `;
+          document.body.appendChild(successMsg);
+
+          gsap.to(successMsg, {
+            opacity: 1,
+            scale: 1.1,
+            duration: 0.3,
+            onComplete: () => {
+              gsap.to(successMsg, {
+                opacity: 0,
+                delay: 2,
+                onComplete: () => successMsg.remove(),
+              });
+            },
+          });
+        },
+      });
+
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Error sending message:", error);
+
+      const errorMsg = document.createElement("div");
+      errorMsg.className = "error-message";
+      errorMsg.textContent = "✗ Failed to send message. Please try again.";
+      errorMsg.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #ff4444;
+        color: white;
+        padding: 20px 40px;
+        border-radius: 10px;
+        font-weight: bold;
+        z-index: 1000;
+        opacity: 0;
+      `;
+      document.body.appendChild(errorMsg);
+
+      gsap.to(errorMsg, {
+        opacity: 1,
+        duration: 0.3,
+        onComplete: () => {
+          gsap.to(errorMsg, {
+            opacity: 0,
+            delay: 2,
+            onComplete: () => errorMsg.remove(),
+          });
+        },
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -146,10 +197,10 @@ export default function Contact() {
       icon: "📧",
       title: "Email",
       value: "Eilyamirmozafary@gmail.com",
-      link: "mailto:eilya@example.com",
+      link: "mailto:Eilyamirmozafary@gmail.com",
     },
     {
-      icon: <FaTelegramPlane color="#4c88c4"/>,
+      icon: <FaTelegramPlane color="#4c88c4" />,
       title: "Telegram Channel",
       value: "Coffee Web",
       link: "https://t.me/coffeee_web",
@@ -176,7 +227,7 @@ export default function Contact() {
       url: "https://t.me/coffeee_web",
       color: "#0088cc",
     },
-    { icon: <FaLinkedin />, name: "Linkdin", url: "#", color: "#b31313" },
+    { icon: <FaLinkedin />, name: "LinkedIn", url: "#", color: "#b31313" },
   ];
 
   return (
@@ -195,7 +246,8 @@ export default function Contact() {
             Get In <span className="text-dark-accent">Touch</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400 px-4">
-            Have a project in mind? Let's create something amazing together!
+            Have a project in mind? Let&apos;s create something amazing
+            together!
           </p>
         </div>
 
@@ -215,6 +267,7 @@ export default function Contact() {
                   className="form-input w-full px-3 sm:px-4 py-2 sm:py-3 bg-dark-card border-2 border-dark-border rounded-lg focus:outline-none focus:border-dark-accent transition-all text-white text-sm sm:text-base"
                   placeholder="John Doe"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -231,6 +284,7 @@ export default function Contact() {
                   className="form-input w-full px-3 sm:px-4 py-2 sm:py-3 bg-dark-card border-2 border-dark-border rounded-lg focus:outline-none focus:border-dark-accent transition-all text-white text-sm sm:text-base"
                   placeholder="john@example.com"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -247,15 +301,17 @@ export default function Contact() {
                   className="form-input w-full px-3 sm:px-4 py-2 sm:py-3 bg-dark-card border-2 border-dark-border rounded-lg focus:outline-none focus:border-dark-accent transition-all text-white resize-none text-sm sm:text-base"
                   placeholder="Tell me about your project..."
                   required
+                  disabled={isSubmitting}
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="submit-button w-full px-6 sm:px-8 py-3 sm:py-4 bg-dark-accent text-black font-bold rounded-lg hover:shadow-2xl transition-all text-base sm:text-lg"
+                disabled={isSubmitting}
+                className="submit-button w-full px-6 sm:px-8 py-3 sm:py-4 bg-dark-accent text-black font-bold rounded-lg hover:shadow-2xl transition-all text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ boxShadow: "0 0 30px rgba(0, 199, 84, 0.3)" }}
               >
-                Send Message 🚀
+                {isSubmitting ? "Sending..." : "Send Message 🚀"}
               </button>
             </form>
           </div>
