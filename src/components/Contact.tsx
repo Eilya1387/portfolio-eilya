@@ -205,7 +205,7 @@ export default function Contact() {
       value: "Coffee Web",
       link: "https://t.me/coffeee_web",
     },
-    { icon: "📍", title: "Location", value: "Qazvin, Iran", link: "#" },
+{ icon: <FaInstagram className="instagram-gradient" />, title: "Instagram page", value: "Eilya.master", link: "https://www.instagram.com/eilya.master/" },
   ];
 
   const socialLinks = [

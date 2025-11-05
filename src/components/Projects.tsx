@@ -33,6 +33,15 @@ const projects = [
     image: "/filimo.webp",
     address: "https://my-filimo.netlify.app/",
   },
+  {
+    id: 4,
+    title: "Khaje Nasir School",
+    description:
+      "landing page website & introduce Khaje Nasir school",
+    tech: ["React js", "TypeScript"],
+    image: "/school.webp",
+    address: "https://nasirsch.ir",
+  },
 ];
 
 export default function Projects() {
