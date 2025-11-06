@@ -10,35 +10,30 @@ gsap.registerPlugin(ScrollTrigger);
 const skills = [
   {
     name: "Next.js",
-    level: 95,
     icon: <SiNextdotjs />,
     color: "#ffffff",
     description: "Building fast, modern web applications",
   },
   {
     name: "React",
-    level: 90,
     icon: <FaReact />,
     color: "#61dafb",
     description: "Creating dynamic user interfaces",
   },
   {
     name: "TypeScript",
-    level: 85,
     icon: <SiTypescript />,
     color: "#3178c6",
     description: "Type-safe development",
   },
   {
     name: "Tailwind CSS",
-    level: 90,
     icon: <SiTailwindcss />,
     color: "#38bdf8",
     description: "Rapid UI development",
   },
   {
     name: "JavaScript",
-    level: 90,
     icon: <FaSquareJs />,
     color: "#f7df1e",
     description: "Modern ES6+ features",
@@ -65,7 +60,6 @@ export default function Skills() {
         const card = `.skill-card-${index}`;
         const icon = `.skill-icon-${index}`;
         const content = `.skill-content-${index}`;
-        const bar = `.skill-bar-${index}`;
 
         gsap.fromTo(
           icon,
@@ -93,36 +87,18 @@ export default function Skills() {
         gsap.fromTo(
           content,
           {
-            x: 100,
+            y: 100,
             opacity: 0,
           },
           {
-            x: 0,
+            y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: 0.9,
             delay: 0.3,
             ease: "power3.out",
             scrollTrigger: {
               trigger: card,
               start: "top 75%",
-              once: true,
-            },
-          }
-        );
-
-        gsap.fromTo(
-          bar,
-          {
-            width: "0%",
-          },
-          {
-            width: `${skills[index].level}%`,
-            duration: 1.5,
-            delay: 0.5,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 70%",
               once: true,
             },
           }
@@ -137,32 +113,6 @@ export default function Skills() {
             end: "bottom top",
             scrub: 1,
           },
-        });
-
-        const cardElement = document.querySelector(card);
-        cardElement?.addEventListener("mouseenter", () => {
-          gsap.to(icon, {
-            scale: 1.2,
-            duration: 0.6,
-            ease: "power2.out",
-          });
-          gsap.to(card, {
-            scale: 1.02,
-            duration: 0.3,
-          });
-        });
-
-        cardElement?.addEventListener("mouseleave", () => {
-          gsap.to(icon, {
-            rotation: 0,
-            scale: 1,
-            duration: 0.6,
-            ease: "power2.out",
-          });
-          gsap.to(card, {
-            scale: 1,
-            duration: 0.3,
-          });
         });
       });
 
@@ -195,12 +145,11 @@ export default function Skills() {
         <h2 className="skills-title text-5xl md:text-6xl font-bold mb-20 text-center">
           Technical <span className="text-dark-accent">Arsenal</span>
         </h2>
-
         <div className="space-y-16">
           {skills.map((skill, index) => (
             <div
               key={index}
-              className={`skill-card-${index} flex flex-col md:flex-row items-center gap-8 p-8 bg-dark-card/50 backdrop-blur-sm rounded-2xl border border-dark-border/50 hover:border-dark-accent/50 transition-colors`}
+              className={`skill-card-${index} flex flex-col items-center gap-8 p-8 bg-dark-card/50 backdrop-blur-sm rounded-2xl border border-dark-border/50 hover:border-dark-accent/50 transition-colors text-center`}
             >
               <div className="flex-shrink-0">
                 <div
@@ -213,46 +162,13 @@ export default function Skills() {
                   {skill.icon}
                 </div>
               </div>
-
               <div className={`skill-content-${index} flex-grow w-full`}>
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="text-3xl font-bold">{skill.name}</h3>
-                  <span
-                    className="text-2xl font-bold"
-                    style={{ color: skill.color }}
-                  >
-                    {skill.level}%
-                  </span>
-                </div>
-
-                <p className="text-gray-400 mb-4 text-lg">
-                  {skill.description}
-                </p>
-
-                <div className="relative">
-                  <div className="w-full h-4 bg-dark-border rounded-full overflow-hidden">
-                    <div
-                      className={`skill-bar-${index} h-full rounded-full relative`}
-                      style={{
-                        background: `linear-gradient(90deg, ${skill.color}cc, ${skill.color})`,
-                        boxShadow: `0 0 20px ${skill.color}80`,
-                      }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-shimmer"></div>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-between mt-2 text-xs text-gray-500">
-                    <span>Beginner</span>
-                    <span>Intermediate</span>
-                    <span>Expert</span>
-                  </div>
-                </div>
+                <h3 className="text-3xl font-bold mb-4">{skill.name}</h3>
+                <p className="text-gray-400 text-lg">{skill.description}</p>
               </div>
             </div>
           ))}
         </div>
-
         <div className="text-center mt-16 text-gray-500 animate-bounce">
           <p>↓ Keep scrolling to explore more ↓</p>
         </div>

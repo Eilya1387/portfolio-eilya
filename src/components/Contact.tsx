@@ -227,7 +227,7 @@ export default function Contact() {
       url: "https://t.me/coffeee_web",
       color: "#0088cc",
     },
-    { icon: <FaLinkedin />, name: "LinkedIn", url: "#", color: "#b31313" },
+    { icon: <FaLinkedin />, name: "LinkedIn", url: "https://www.linkedin.com/in/eilya-mirzaei-1318b3397/", color: "#b31313" },
   ];
 
   return (
@@ -311,7 +311,7 @@ export default function Contact() {
                 className="submit-button w-full px-6 sm:px-8 py-3 sm:py-4 bg-dark-accent text-black font-bold rounded-lg hover:shadow-2xl transition-all text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ boxShadow: "0 0 30px rgba(0, 199, 84, 0.3)" }}
               >
-                {isSubmitting ? "Sending..." : "Send Message 🚀"}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
