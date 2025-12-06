@@ -20,7 +20,7 @@ const projects = [
     title: "Navazino",
     description: "Music streaming Website",
     tech: ["React js", "TypeScript", "Tailwind"],
-    image: "/navazino.webp",
+    image: "/Navazino.webp",
     address: "https://navazino.com/",
   },
   {
