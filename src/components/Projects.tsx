@@ -21,7 +21,7 @@ const projects = [
     description: "Music streaming Website",
     tech: ["React js", "TypeScript", "Tailwind"],
     image: "/navazino.webp",
-    address: "https://navazino.com",
+    address: "https://navazino.com/",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const projects = [
     description: "landing page website & introduce Khaje Nasir school",
     tech: ["React js", "TypeScript"],
     image: "/school.webp",
-    address: "https://nasirsch.ir",
+    address: "https://nasirsch.ir/",
   },
   {
     id: 5,
