@@ -17,6 +17,14 @@ const projects = [
   },
   {
     id: 2,
+    title: "Navazino",
+    description: "Music streaming Website",
+    tech: ["React js", "TypeScript", "Tailwind"],
+    image: "/navazino.webp",
+    address: "https://navazino.com",
+  },
+  {
+    id: 3,
     title: "Order Fastfood online",
     description:
       "Implement a modern web application for online pizza ordering with full customization capabilities.",
@@ -25,22 +33,21 @@ const projects = [
     address: "https://mcdonald-fastfood.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
+    title: "Khaje Nasir School",
+    description: "landing page website & introduce Khaje Nasir school",
+    tech: ["React js", "TypeScript"],
+    image: "/school.webp",
+    address: "https://nasirsch.ir",
+  },
+  {
+    id: 5,
     title: "Filimo site clone",
     description:
       "Design and implementation of a clone version of the Filmo website.",
     tech: ["React js", "Tailwind"],
     image: "/filimo.webp",
     address: "https://my-filimo.vercel.app/",
-  },
-  {
-    id: 4,
-    title: "Khaje Nasir School",
-    description:
-      "landing page website & introduce Khaje Nasir school",
-    tech: ["React js", "TypeScript"],
-    image: "/school.webp",
-    address: "https://nasirsch.ir",
   },
 ];
 
