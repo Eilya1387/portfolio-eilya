@@ -20,7 +20,7 @@ const projects = [
     title: "Navazino",
     description: "Music streaming Website",
     tech: ["React js", "TypeScript", "Tailwind"],
-    image: "/Navazino.webp",
+    image: "/navazino.webp",
     address: "https://navazino.com/",
   },
   {
@@ -48,6 +48,33 @@ const projects = [
     tech: ["React js", "Tailwind"],
     image: "/filimo.webp",
     address: "https://my-filimo.vercel.app/",
+  },
+  {
+    id: 6,
+    title: "Eyes on studio agency",
+    description:
+      "Design and develop a modern website for Eyes on studio agency.",
+    tech: ["Astro", "Tailwind", "TypeScript"],
+    image: "/eyesonstudio.webp",
+    address: "https://eyesonstudio.com/",
+  },
+  {
+    id: 7,
+    title: "Wexun Team",
+    description:
+      "modern website for Wexun team, a group of talented developers and designers.",
+    tech: ["Next js", "Tailwind", "TypeScript"],
+    image: "/wexun.webp",
+    address: "https://wexun.netlify.app/",
+  },
+  {
+    id: 8,
+    title: "Fellowchap",
+    description:
+      "develop a modern website for Fellowchap, a platform that you can upload and crop picture for print.",
+    tech: ["Next js", "Tailwind", "TypeScript"],
+    image: "/fellowchap.webp",
+    address: "https://fellowchap-next.vercel.app/",
   },
 ];
 
@@ -112,7 +139,7 @@ export default function Projects() {
                 <img
                   src={project.image}
                   alt=""
-                  className="w-full object-cover h-48 bg-dark-border rounded-lg mb-4 flex items-center justify-center"
+                  className="w-full object-cover h-49 bg-dark-border rounded-lg mb-4 flex items-center justify-center"
                 />
               </div>
 
