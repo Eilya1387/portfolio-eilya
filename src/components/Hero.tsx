@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import FloatingTechIcons from "./FloatingIcons";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -54,7 +55,7 @@ export default function Hero() {
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-card to-dark-bg"></div>
-
+      <FloatingTechIcons />
       <div className="relative z-10 text-center px-6">
         <h1 className="hero-title text-6xl md:text-8xl font-bold mb-4">
           Hi, I&apos;m <span className="text-dark-accent">Eilya</span>
