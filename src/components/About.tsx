@@ -38,7 +38,7 @@ export default function About() {
             trigger: ".about-image",
             start: "top 80%",
           },
-        }
+        },
       );
 
       gsap.from(".about-text", {
@@ -52,28 +52,25 @@ export default function About() {
         },
       });
 
-      const stats = document.querySelectorAll(".stat-number");
-      stats.forEach((stat) => {
-        const target = parseInt(stat.getAttribute("data-target") || "0");
-        gsap.fromTo(
-          stat,
-          { textContent: 0 },
-          {
-            textContent: target,
-            duration: 2,
-            ease: "power1.inOut",
-            snap: { textContent: 1 },
-            scrollTrigger: {
-              trigger: stat,
-              start: "top 80%",
-            },
-            onUpdate: function () {
-              stat.textContent = Math.ceil(
-                gsap.getProperty(stat, "textContent") as number
-              ).toString();
-            },
-          }
-        );
+      const statNumbers = document.querySelectorAll(".stat-number");
+
+      statNumbers.forEach((stat) => {
+        const target = Number(stat.getAttribute("data-target") || 0);
+        const counter = { value: 0 };
+
+        gsap.to(counter, {
+          value: target,
+          duration: 2,
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: stat,
+            start: "top 80%",
+            once: true,
+          },
+          onUpdate: () => {
+            stat.textContent = `${Math.ceil(counter.value).toLocaleString()}+`;
+          },
+        });
       });
 
       gsap.to(".about-image", {
@@ -101,8 +98,8 @@ export default function About() {
   }, []);
 
   const stats = [
-    { label: "Code Commits", value: 500 },
-    { label: "GitHub Repos", value: 12 },
+    { label: "Projects Delivered", value: 10 },
+    { label: "GitHub Repos", value: 30 },
     { label: "Years Coding", value: 4 },
     { label: "Technologies", value: 13 },
   ];
@@ -158,8 +155,8 @@ export default function About() {
               effects.
             </p>
             <p className="about-text text-xl text-gray-300 mb-6 leading-relaxed">
-              When I&apos;m not coding, you&apos;ll find me playing guitar or football,
-              always staying active and creative.
+              When I&apos;m not coding, you&apos;ll find me playing guitar or
+              football, always staying active and creative.
             </p>
 
             <div className="about-text flex gap-4 mt-6">

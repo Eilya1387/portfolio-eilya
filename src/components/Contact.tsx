@@ -367,7 +367,7 @@ export default function Contact() {
 
         <div className="text-center mt-12 sm:mt-16 md:mt-20 text-gray-500">
           <p className="text-base sm:text-lg">Made with 💚 by Eilya</p>
-          <p className="text-xs sm:text-sm mt-2">© 2025 All rights reserved</p>
+          <p className="text-xs sm:text-sm mt-2">© 2026 All rights reserved</p>
         </div>
       </div>
     </section>
