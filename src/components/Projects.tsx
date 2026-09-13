@@ -67,8 +67,17 @@ const projects = [
     image: "/wexun.webp",
     address: "https://wexun.netlify.app/",
   },
-  {
+    {
     id: 8,
+    title: "Alo zoghal",
+    description:
+      "modern website for coal factory a factory of producing coal and send them.",
+    tech: ["Next js", "Tailwind", "TypeScript"],
+    image: "/alo.webp",
+    address: "https://alo-zoghal.ir",
+  },
+  {
+    id: 9,
     title: "Fellowchap",
     description:
       "develop a modern website for Fellowchap, a platform that you can upload and crop picture for print.",
