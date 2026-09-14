@@ -65,7 +65,7 @@ const projects = [
       "modern website for Wexun team, a group of talented developers and designers.",
     tech: ["Next js", "Tailwind", "TypeScript"],
     image: "/wexun.webp",
-    address: "https://wexun.netlify.app/",
+    address: "https://wexun.ir/",
   },
     {
     id: 8,
