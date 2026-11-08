@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "78505858",
+  title: "Eilya | Frontend Developer & Next.js Specialist",
   description: "Eilya Mirzaei Portfolio - Expert in Next.js, React, TypeScript, GSAP Animation | سایت شخصی ایلیا | Eilya Personal Website",
   keywords: [
     "ایلیا میرزایی",
