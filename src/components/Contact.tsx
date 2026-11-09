@@ -205,7 +205,12 @@ export default function Contact() {
       value: "Coffee Web",
       link: "https://t.me/coffeee_web",
     },
-{ icon: <FaInstagram className="instagram-gradient" />, title: "Instagram page", value: "Eilya.master", link: "https://www.instagram.com/eilya.master/" },
+    {
+      icon: <FaInstagram className="instagram-gradient" />,
+      title: "Instagram page",
+      value: "Eilya.master",
+      link: "https://www.instagram.com/eilya.master/",
+    },
   ];
 
   const socialLinks = [
@@ -227,7 +232,12 @@ export default function Contact() {
       url: "https://t.me/coffeee_web",
       color: "#0088cc",
     },
-    { icon: <FaLinkedin />, name: "LinkedIn", url: "https://www.linkedin.com/in/eilya-mirzaei-1318b3397/", color: "#b31313" },
+    {
+      icon: <FaLinkedin />,
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/eilya-mirzaei-1318b3397/",
+      color: "#b31313",
+    },
   ];
 
   return (
@@ -364,7 +374,20 @@ export default function Contact() {
             </div>
           </div>
         </div>
-
+        <div className="flex justify-center items-center mt-8">
+          <a
+            referrerPolicy="origin"
+            target="_blank"
+            href="https://trustseal.enamad.ir/?id=8598496&Code=frm3XcOVgh8RsfwaNgaFSeM4zDAeu2j4"
+          >
+            <img
+              referrerPolicy="origin"
+              src="https://trustseal.enamad.ir/logo.aspx?id=8598496&Code=frm3XcOVgh8RsfwaNgaFSeM4zDAeu2j4"
+              alt="نماد اعتماد الکترونیکی"
+              style={{ cursor: "pointer" }}
+            />
+          </a>
+        </div>
         <div className="text-center mt-12 sm:mt-16 md:mt-20 text-gray-500">
           <p className="text-base sm:text-lg">Made with 💚 by Eilya</p>
           <p className="text-xs sm:text-sm mt-2">© 2026 All rights reserved</p>
